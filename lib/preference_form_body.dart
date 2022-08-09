@@ -28,8 +28,8 @@ class _preference_form_bodyState extends State<preference_form_body> {
           children: [
             SizedBox(height: 30,),
             Container(child: Animated_textfield(hintText: "First name",)),
-            SizedBox(height: 30,),
-            Container(child: TextField(),color: Colors.green,),
+            SizedBox(height: 20,),
+            Container(child: Animated_textfield(hintText: "Last name",)),
             SizedBox(height: 30,),
             Row(
               children: [

@@ -16,6 +16,7 @@ class _Animated_textfieldState extends State<Animated_textfield> {
   EdgeInsetsGeometry labelMargin = EdgeInsets.only(left: 30,top: 20);
   BoxBorder labelBorder = Border.symmetric(vertical: BorderSide.none);
   double labelFontsize = 18;
+  Duration duration = Duration(milliseconds: 300);
 
   void initiateAnimation(){
     print("initiating animation");
@@ -61,7 +62,7 @@ class _Animated_textfieldState extends State<Animated_textfield> {
           GestureDetector(
             onTap: ()=>initiateAnimation(),
             child: AnimatedContainer(
-              duration: Duration(seconds: 1),
+              duration: duration,
               height: labelHight,
               width: labelWidth,
               margin: labelMargin,
@@ -72,7 +73,7 @@ class _Animated_textfieldState extends State<Animated_textfield> {
               ),
               padding: EdgeInsets.only(left: 2,right: 2),
               child: AnimatedDefaultTextStyle(
-                duration: Duration(seconds: 1),
+                duration: duration,
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: labelFontsize,
