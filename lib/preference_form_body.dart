@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:loginanimation/Animated_textfield.dart';
 
 class preference_form_body extends StatefulWidget {
   const preference_form_body({Key? key}) : super(key: key);
@@ -26,7 +27,7 @@ class _preference_form_bodyState extends State<preference_form_body> {
         child: Column(
           children: [
             SizedBox(height: 30,),
-            Container(child: TextField(),color: Colors.pinkAccent),
+            Container(child: Animated_textfield(),color: Colors.pinkAccent),
             SizedBox(height: 30,),
             Container(child: TextField(),color: Colors.green,),
             SizedBox(height: 30,),
