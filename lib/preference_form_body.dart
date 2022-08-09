@@ -27,7 +27,7 @@ class _preference_form_bodyState extends State<preference_form_body> {
         child: Column(
           children: [
             SizedBox(height: 30,),
-            Container(child: Animated_textfield(),color: Colors.pinkAccent),
+            Container(child: Animated_textfield(hintText: "First name",)),
             SizedBox(height: 30,),
             Container(child: TextField(),color: Colors.green,),
             SizedBox(height: 30,),
