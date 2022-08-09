@@ -25,7 +25,7 @@ class _preference_widgetState extends State<preference_widget> with SingleTicker
   }
   @override
   initState(){
-    _controller = AnimationController(vsync: this,duration: Duration(seconds: 1));
+    _controller = AnimationController(vsync: this,duration: Duration(milliseconds: 700));
     _alignmentanimation = Tween<Alignment>(begin: Alignment.center,end: Alignment.topLeft).animate(CurvedAnimation(parent: _controller, curve: Interval(0.3, 1,curve: Curves.easeOut)));
     _sizeanimation = Tween<double>(begin: 300,end: 90).animate(CurvedAnimation(parent: _controller, curve: Interval(0.3, 1,curve: Curves.easeOut)));
     _controller.forward().then((value) => setState((){

@@ -21,7 +21,7 @@ class _preference_form_bodyState extends State<preference_form_body> {
   Widget build(BuildContext context) {
     return AnimatedOpacity(
       opacity: opacity,
-      duration: Duration(seconds: 1),
+      duration: Duration(milliseconds: 700),
       child: Container(
         child: Column(
           children: [
@@ -61,7 +61,7 @@ class _preference_form_bodyState extends State<preference_form_body> {
                           },
                           child: Column(
                             children: [
-                              Text("Birthdate",style: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.bold),),
+                              (DOB==null)?Text("Birthdate",style: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.bold),):Container(),
                               ShaderMask(
                                 child: IconButton(onPressed: null, icon: Icon(Icons.cake,color: Colors.white,size: 34,)),
                                 blendMode: BlendMode.srcIn,
@@ -69,12 +69,8 @@ class _preference_form_bodyState extends State<preference_form_body> {
                               ),
                               (DOB==null)?
                               Container():
-                              ShaderMask(
-                                child: Text(DOB!.day.toString()+"/"+DOB!.month.toString()+"/"+DOB!.year.toString(), 
+                              Text(DOB!.day.toString()+"/"+DOB!.month.toString()+"/"+DOB!.year.toString(),
                                 style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,),),
-                                blendMode: BlendMode.srcIn,
-                                shaderCallback: (bounds) => gradient.createShader(Rect.fromLTWH(0, 0, bounds.width, bounds.height),),
-                              )
                             ],
                           ),
                         )
