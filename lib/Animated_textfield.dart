@@ -12,11 +12,17 @@ class Animated_textfield extends StatefulWidget {
 class _Animated_textfieldState extends State<Animated_textfield> {
   bool AnimationState = false;
   double labelHight = 30;
-  double labelWidth = 104;
+  late double labelWidth;
   EdgeInsetsGeometry labelMargin = EdgeInsets.only(left: 30,top: 20);
   BoxBorder labelBorder = Border.symmetric(vertical: BorderSide.none);
-  double labelFontsize = 18;
+  double labelFontsize = 16;
   Duration duration = Duration(milliseconds: 300);
+
+  @override
+  initState(){
+    labelWidth = (widget.hintText.length*9.5);
+    super.initState();
+  }
 
   void initiateAnimation(){
     print("initiating animation");
@@ -24,7 +30,7 @@ class _Animated_textfieldState extends State<Animated_textfield> {
       AnimationState = true;
       setState((){
         labelHight = 20;
-        labelWidth = 70.66;
+        labelWidth = (widget.hintText.length*8);
         labelMargin = EdgeInsets.only(left: 20,top: 5);
         labelBorder = Border.symmetric(vertical: BorderSide(color: Colors.white,width: 2));
         labelFontsize = 12;
@@ -45,7 +51,9 @@ class _Animated_textfieldState extends State<Animated_textfield> {
             height: 50,
             decoration: BoxDecoration(
               border: Border.all(color: Colors.white,style: BorderStyle.solid,width: 2,),
-              borderRadius: BorderRadius.circular(15)
+              borderRadius: BorderRadius.circular(15),
+              boxShadow: [BoxShadow(color: Colors.grey,blurRadius: 1,spreadRadius: 1,offset: Offset(2,2))],
+              color: Color.fromRGBO(36, 118, 130, 1)
             ),
             padding: EdgeInsets.only(left: 40,top: 5),
             child: TextField(
@@ -66,7 +74,7 @@ class _Animated_textfieldState extends State<Animated_textfield> {
               height: labelHight,
               width: labelWidth,
               margin: labelMargin,
-              alignment: Alignment.center,
+              alignment: Alignment.centerLeft,
               decoration: BoxDecoration(
                   color: Color.fromRGBO(36, 118, 130, 1),
                   border: labelBorder,
