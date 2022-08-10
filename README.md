@@ -1,6 +1,10 @@
-# loginanimation
+# log-in Animation
 
 A new Flutter project.
+
+Front-End only project for sign-in to new social media app.
+Heavily focused on animations and design.
+need to configure backend when used in app project.
 
 ## Getting Started
 
