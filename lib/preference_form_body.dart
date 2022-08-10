@@ -11,11 +11,38 @@ class preference_form_body extends StatefulWidget {
 class _preference_form_bodyState extends State<preference_form_body> {
   double opacity = 0;
   DateTime? DOB;
+  String selectedGender = "";
+  bool isMaleSelected = false;
+  bool isFemaleSelected = false;
   Gradient gradient = LinearGradient(colors: [Color.fromRGBO(24, 197, 96, 1.0),Color.fromRGBO(251, 215, 134, 1),Color.fromRGBO(
       203, 20, 25, 1.0)]);
   @override
   initState(){
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {setState(()=>opacity=1);});
+  }
+
+  Decoration provideDecoration(bool gender){
+    if(gender){
+      return BoxDecoration(borderRadius: BorderRadius.circular(40),boxShadow: [BoxShadow(color: Colors.red,spreadRadius: 2,blurRadius: 2)]);
+    }
+    return BoxDecoration(borderRadius: BorderRadius.circular(40));
+  }
+
+  void toggleGender(String gender){
+    if(gender=="male"){
+      setState((){
+        isMaleSelected = true;
+        isFemaleSelected = false;
+        selectedGender = gender;
+      });
+    }
+    else{
+      setState((){
+        isMaleSelected = false;
+        isFemaleSelected = true;
+        selectedGender = gender;
+      });
+    }
   }
 
   @override
@@ -26,25 +53,59 @@ class _preference_form_bodyState extends State<preference_form_body> {
       child: Container(
         child: Column(
           children: [
-            SizedBox(height: 30,),
+            SizedBox(height: 16,),
             Container(child: Animated_textfield(hintText: "First name",)),
-            SizedBox(height: 20,),
+            SizedBox(height: 16,),
             Container(child: Animated_textfield(hintText: "Last name",)),
-            SizedBox(height: 30,),
+            SizedBox(height: 16,),
             Row(
               children: [
                 Expanded(
                   flex: 2,
-                  child: GestureDetector(
-                    onHorizontalDragEnd : (details) {
-                      if(details.primaryVelocity!=null && details.primaryVelocity!>0){
-                        print("swiped right");
-                      }
-                      if(details.primaryVelocity!=null && details.primaryVelocity!<0){
-                        print("swiped left");
-                      }
-                    },
-                    child: Container(color: Colors.yellow,height: 100,),
+                  child: Container(
+                    height: 120,
+                    child: Column(
+                      children: [
+                        Container(
+                          height: 30,
+                          width: 140,
+                          alignment: Alignment.topCenter,
+                          child: Text(
+                            "Choose Gender",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold
+                            ),
+                          ),
+                        ),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            GestureDetector(
+                              onTap: ()=>toggleGender("male"),
+                              child: Container(
+                                height: 80,
+                                width: 80,
+                                child: Image.asset("assets/male.png"),
+                                decoration: provideDecoration(isMaleSelected),
+                              ),
+                            ),
+                            SizedBox(width: 20,),
+                            GestureDetector(
+                              onTap: ()=>toggleGender("female"),
+                              child: Container(
+                                height: 80,
+                                width: 80,
+                                child: Image.asset("assets/female.png"),
+                                decoration: provideDecoration(isFemaleSelected),
+                              ),
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
                   )
                   ,
                 ),
@@ -78,7 +139,8 @@ class _preference_form_bodyState extends State<preference_form_body> {
                     )
                 ),
               ],
-            )
+            ),
+            Align(alignment: Alignment.bottomRight,child: Container(margin : EdgeInsets.only(right: 30),child : IconButton(onPressed: null, icon: Icon(Icons.check_circle_outline,color: Colors.white,size: 30,))))
           ],
         ),
       ),
