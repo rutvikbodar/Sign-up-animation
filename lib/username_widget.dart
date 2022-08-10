@@ -23,7 +23,7 @@ class _username_widgetState extends State<username_widget> {
             width: 300,
             child: const TextField(
               textAlign: TextAlign.center,
-              decoration: InputDecoration(border: InputBorder.none),
+              decoration: InputDecoration(border: InputBorder.none,hintText: "Username",hintStyle: TextStyle(color: Colors.black54,)),
               style: TextStyle(color: Colors.black54,fontWeight: FontWeight.w900,fontSize: 22),
             ),
           ),
