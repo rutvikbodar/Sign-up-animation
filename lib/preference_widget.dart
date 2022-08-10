@@ -72,7 +72,7 @@ class _preference_widgetState extends State<preference_widget> with SingleTicker
             padding: EdgeInsets.only(left: 15),
             child: AnimatedOpacity(
               opacity: opacity,
-              duration: Duration(seconds: 1),
+              duration: Duration(milliseconds: 700),
               child: Text("About you",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30,color: Colors.white)),
             ),
           ),
